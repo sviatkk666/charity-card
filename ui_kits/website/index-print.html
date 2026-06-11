@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Збір ЛНМУ — Фонд «Освіта. Наука. Медицина»</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body { margin: 0; }
+  body { background: var(--cc-cream); color: var(--cc-text); font-family: var(--cc-font-body); -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--cc-teal-soft); }
+  html { scroll-behavior: smooth; }
+  image-slot { --is-bg: var(--cc-cream-2); }
+  @keyframes ccFade { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes ccMeter { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+  @keyframes ccPop { from { opacity: 0; transform: translateY(10px) scale(.98) } to { opacity: 1; transform: none } }
+  .cc-burger { display: none; }
+  @media (max-width: 880px) {
+    .cc-desk-nav { display: none !important; }
+    .cc-burger { display: grid !important; place-items: center; }
+    .cc-hero-copy { order: 1; }
+    .cc-hero-card { order: 2; }
+    section [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 760px) {
+    .cc-why-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* ---------- PRINT ---------- */
+  @page { size: A4 portrait; margin: 12mm; }
+  @media print {
+    html, body { background: #fff !important; }
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      animation-delay: -99s !important; animation-duration: .001s !important;
+      animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+      animation-play-state: running !important; transition-duration: 0s !important;
+    }
+    /* Un-stick the header, drop blur/shadow so it prints as a clean band */
+    header { position: static !important; backdrop-filter: none !important; }
+    /* Hide interactive-only chrome */
+    #cc-tweaks-root, [data-tweaks-panel], .cc-burger { display: none !important; }
+    /* Each major section starts on a fresh page */
+    #collection, #fund, #transparency, #contacts { break-before: page; }
+    /* Keep cards, tiles, figures and pillars intact across page edges */
+    article, figure, label,
+    section [style*="border-radius"][style*="padding"] { break-inside: avoid; }
+    section { padding-top: 40px !important; padding-bottom: 40px !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="image-slot.js"></script>
+<script src="data.js"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="icons.jsx"></script>
+<script type="text/babel" src="motion.jsx"></script>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="header-hero.jsx"></script>
+<script type="text/babel" src="sections-about.jsx"></script>
+<script type="text/babel" src="sections-trust.jsx"></script>
+<script type="text/babel" src="donate-modal.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "heroStyle": "paper",
+  "ctaColor": "teal"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [modal, setModal] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 24);
+    on(); window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, []);
+  const data = window.CC_DATA;
+  const accent = t.ctaColor === 'blue' ? 'primary' : 'donate';
+  const openModal = () => setModal(true);
+
+  return (
+    <div className="cc-root">
+      <Header data={data} accent={accent} onDonate={openModal} scrolled={scrolled} />
+      <Hero data={data} accent={accent} heroStyle={t.heroStyle} onDonate={openModal} />
+      <CollectionSection data={data} />
+      <FundSection data={data} />
+      <TransparencySection data={data} />
+      <ContactsSection data={data} accent={accent} onDonate={openModal} />
+      <Footer data={data} />
+      <DonateModal data={data} accent={accent} open={modal} onClose={() => setModal(false)} />
+
+      <TweaksPanel>
+        <TweakSection label="Hero" />
+        <TweakRadio label="Стиль hero" value={t.heroStyle} options={['paper', 'dramatic']}
+          onChange={(v) => setTweak('heroStyle', v)} />
+        <TweakSection label="Заклик до дії" />
+        <TweakRadio label="Колір CTA" value={t.ctaColor} options={['teal', 'blue']}
+          onChange={(v) => setTweak('ctaColor', v)} />
+      </TweaksPanel>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<script type="text/babel">
+// Auto-print once fonts are loaded and the React tree has rendered.
+(function () {
+  function ready() {
+    const root = document.getElementById('root');
+    return root && root.querySelector('header') && root.querySelector('footer');
+  }
+  function waitForRender() {
+    return new Promise((resolve) => {
+      let tries = 0;
+      (function poll() {
+        if (ready() || tries > 120) return resolve();
+        tries++; setTimeout(poll, 50);
+      })();
+    });
+  }
+  Promise.all([
+    (document.fonts ? document.fonts.ready : Promise.resolve()),
+    waitForRender(),
+  ]).then(() => setTimeout(() => window.print(), 600));
+})();
+</script>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#0C2740"/><circle cx="50" cy="42" r="20" fill="none" stroke="#2E9E88" stroke-width="3"/><path d="M30 64 h40 M50 56 v16" stroke="#13548C" stroke-width="4" stroke-linecap="round"/></svg>
+</template>
+</body>
+</html>

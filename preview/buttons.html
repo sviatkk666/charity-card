@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html><html lang="uk"><head><meta charset="utf-8">
+<link rel="stylesheet" href="_card.css"><style>
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--cc-font-body);font-weight:700;font-size:15px;
+  border-radius:var(--cc-r-pill);padding:12px 22px;border:1.5px solid transparent;cursor:pointer;line-height:1;transition:.15s}
+.btn-primary{background:var(--cc-blue);color:#fff;box-shadow:var(--cc-shadow-blue)}
+.btn-donate{background:var(--cc-teal);color:#fff;box-shadow:var(--cc-shadow-teal)}
+.btn-sec{background:transparent;color:var(--cc-blue);border-color:var(--cc-blue)}
+.btn-ghost{background:transparent;color:var(--cc-text-2)}
+.btn-sm{padding:9px 16px;font-size:13px}
+.btn svg{width:16px;height:16px}</style></head>
+<body>
+<div class="row" style="align-items:center">
+  <button class="btn btn-donate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>Підтримати збір</button>
+  <button class="btn btn-primary">Зробити внесок</button>
+  <button class="btn btn-sec">Дізнатись більше</button>
+  <button class="btn btn-ghost">Статут фонду →</button>
+</div>
+<div class="row" style="align-items:center;margin-top:14px">
+  <button class="btn btn-donate btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>Підтримати</button>
+  <button class="btn btn-primary btn-sm">100 грн</button>
+  <button class="btn btn-sec btn-sm">Інша сума</button>
+  <span class="lbl" style="align-self:center">pill · sizes md / sm</span>
+</div></body></html>
