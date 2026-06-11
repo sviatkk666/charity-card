@@ -40,7 +40,7 @@ function CollectionSection({ data }) {
               ))}
             </div></Reveal>
           </div>
-          <Reveal delay={160}><ImageSlot id="cc-premises" ratio="4 / 3"
+          <Reveal delay={160}><ImageSlot id="cc-premises" ratio="16 / 9"
             src={window.ccRes('premisesCurrent', 'assets/premises-current.jpg')}
             label="Поточний стан приміщення майбутньої клініки" /></Reveal>
         </div>
@@ -81,7 +81,7 @@ function CollectionSection({ data }) {
           alignItems: 'center', marginTop: 64, background: 'var(--cc-cream-2)', borderRadius: 'var(--cc-r-xl)', padding: 32 }}>
           <ImageSlot id="cc-letter" ratio="3 / 4" placeholder="Скан листа-звернення від Університету"
             src={window.ccRes('letterScan', 'assets/letter-scan.jpg')}
-            label="Офіційне звернення ЛНМУ — для прозорості" />
+            label="Офіційне звернення ЛНМУ" />
           <div>
             <Eyebrow>Підстава збору</Eyebrow>
             <h3 className="cc-h3" style={{ margin: '12px 0 0' }}>Офіційне звернення від Університету</h3>

@@ -30,7 +30,11 @@ window.CC_DATA = {
       'ДНТ «ЛНМУ імені Данила Галицького»',
       'Університетська лікарня ЛНМУ',
     ],
-    presets: [200, 500, 1000, 2500],
+  },
+  payment: {
+    qrLink: 'https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JHQu9Cw0LPQvtC00ZbQudC90LAg0L7RgNCz0LDQvdGW0LfQsNGG0ZbRjyDigJzQkdC70LDQs9C-0LTRltC50L3QuNC5INCk0L7QvdC0IOKAnNCe0YHQstGW0YLQsC4g0J3QsNGD0LrQsC4g0JzQtdC00LjRhtC40L3QsOKAneKAnQpVQTQ2MzM5NTAwMjYwMDQwMTgzNjc2OTAwMDAwMQpVQUgwCjQ2MjM3NTM4CgoK0JHQu9Cw0LPQvtC00ZbQudC90LjQuSDQstC90LXRgdC-0LoKCg',
+    iban: 'UA46 3395 0026 0040 1836 7690 0000 1',
+    purpose: 'Благодійний внесок',
   },
   event: {
     badge: 'Благодійний вечір «Простір світла, гідності та підтримки»',
@@ -76,6 +80,32 @@ window.CC_DATA = {
   ],
 };
 window.fmtUAH = (n) => n.toLocaleString('uk-UA').replace(/,/g, ' ');
+/* Живий лічильник: опублікована Google-таблиця (Файл → Поширити → Опублікувати
+   в Інтернеті → CSV). Клієнт редагує клітинки — сайт підтягує цифри при кожному
+   завантаженні. Рядки CSV: "зібрано,7000000" / "донорів,123" / "мета,20000000".
+   Поки URL порожній — використовуються значення з campaign вище. */
+window.CC_COUNTER_URL = '';
+window.ccLoadCounter = async () => {
+  if (!window.CC_COUNTER_URL) return;
+  try {
+    const res = await fetch(window.CC_COUNTER_URL, { cache: 'no-store' });
+    if (!res.ok) return;
+    const text = await res.text();
+    const num = (v) => parseInt(String(v || '').replace(/[^\d]/g, ''), 10);
+    const c = window.CC_DATA.campaign;
+    text.split(/\r?\n/).forEach((line) => {
+      const cells = line.split(',');
+      const key = (cells[0] || '').toLowerCase();
+      const val = num(cells[1]);
+      if (isNaN(val)) return;
+      if (/зібрано|raised/.test(key)) c.raised = val;
+      else if (/донор|donors/.test(key)) c.donors = val;
+      else if (/мета|goal/.test(key)) { if (val > 0) c.goal = val; }
+    });
+    window.dispatchEvent(new Event('cc:data'));
+  } catch (e) { /* офлайн або таблиця недоступна — лишаємо значення з data.js */ }
+};
+window.ccLoadCounter();
 /* Resolve an asset: use the inlined blob (standalone bundle) when present,
    otherwise fall back to the relative path (live/dev). */
 window.ccRes = (id, path) => (window.__resources && window.__resources[id]) || path;

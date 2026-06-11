@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Збір ЛНМУ — Фонд «Освіта. Наука. Медицина»</title>
 <link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
 <meta name="ext-resource-dependency" content="assets/logo-mark.png" data-resource-id="logoMark" />
 <meta name="ext-resource-dependency" content="assets/poster-lnmu.jpg" data-resource-id="posterLnmu" />
+<meta name="ext-resource-dependency" content="assets/letter-scan.jpg" data-resource-id="letterScan" />
+<meta name="ext-resource-dependency" content="assets/premises-current.jpg" data-resource-id="premisesCurrent" />
+<meta name="ext-resource-dependency" content="assets/qr-donate.jpg" data-resource-id="qrDonate" />
 <style>
   html, body { margin: 0; }
   body { background: var(--cc-cream); color: var(--cc-text); font-family: var(--cc-font-body); -webkit-font-smoothing: antialiased; }
@@ -14,6 +19,7 @@
   html { scroll-behavior: smooth; }
   image-slot { --is-bg: var(--cc-cream-2); }
   @keyframes ccFade { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes ccBeat { 0%,100% { transform: scale(1) } 14% { transform: scale(1.16) } 28% { transform: scale(1) } 42% { transform: scale(1.1) } 56% { transform: scale(1) } }
   @keyframes ccMeter { from { transform: scaleX(0) } to { transform: scaleX(1) } }
   @keyframes ccPop { from { opacity: 0; transform: translateY(10px) scale(.98) } to { opacity: 1; transform: none } }
   @media (prefers-reduced-motion: no-preference) {
@@ -36,7 +42,7 @@
 </style>
 </head>
 <body>
-<div id="root"></div>
+<div id="root"><div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#FAF7F2"><svg width="86" height="86" viewBox="0 0 24 24" style="animation:ccBeat 1.15s ease-in-out infinite;transform-origin:50% 60%"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.51 4.04 3 5.5l7 7Z" fill="#2E9E88"/></svg><div style="font-family:Montserrat,Manrope,system-ui,sans-serif;font-weight:700;font-size:15px;letter-spacing:.04em;color:#13548C">Освіта. Наука. Медицина</div></div></div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -68,6 +74,12 @@ function App() {
     const on = () => setScrolled(window.scrollY > 24);
     on(); window.addEventListener('scroll', on, { passive: true });
     return () => window.removeEventListener('scroll', on);
+  }, []);
+  const [, setDataRev] = React.useState(0);
+  React.useEffect(() => {
+    const on = () => setDataRev((r) => r + 1);
+    window.addEventListener('cc:data', on);
+    return () => window.removeEventListener('cc:data', on);
   }, []);
   const data = window.CC_DATA;
   const accent = t.ctaColor === 'blue' ? 'primary' : 'donate';
@@ -103,7 +115,7 @@ function App() {
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 <template id="__bundler_thumbnail">
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#0C2740"/><circle cx="50" cy="42" r="20" fill="none" stroke="#2E9E88" stroke-width="3"/><path d="M30 64 h40 M50 56 v16" stroke="#13548C" stroke-width="4" stroke-linecap="round"/></svg>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#FAF7F2"/><path transform="translate(26,28) scale(2)" d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.51 4.04 3 5.5l7 7Z" fill="#2E9E88"/></svg>
 </template>
 </body>
 </html>

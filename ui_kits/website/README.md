@@ -40,8 +40,10 @@ All components attach to `window` (separate Babel scopes). Style objects are
 inlined or uniquely named — no shared `styles` global.
 
 ## Known stubs
-- **Amounts & donor count** are illustrative; **email** is a placeholder. Edit `data.js`.
-- **Payment** is faked in `DonateModal` — wire LiqPay / Fondy / monobank in production.
+- **Amounts & donor count** start at 0 in `data.js`; set `window.CC_COUNTER_URL`
+  (published Google Sheet CSV) to let the foundation update them without code.
+- **Payment** is a real NBU payment QR (`assets/qr-donate.jpg` + `payment` in
+  `data.js`) — opens in any Ukrainian bank app; no checkout form by design.
 - `<image-slot>` persistence writes a sidecar at the **project root**; from this
   nested path drops render but may not persist. Move the page to root, or accept
   placeholder-only behaviour in the kit.

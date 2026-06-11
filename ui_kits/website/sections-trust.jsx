@@ -52,7 +52,7 @@ function ContactsSection({ data, accent, onDonate }) {
           <Eyebrow style={{ color: 'var(--cc-teal)' }}>Контакти</Eyebrow>
           <h2 className="cc-h2" style={{ color: '#fff', margin: '12px 0 0' }}>Маєте питання чи хочете долучитися?</h2>
           <p className="cc-body-lg" style={{ color: 'var(--cc-text-on-dark)', margin: '16px 0 0', maxWidth: 520 }}>
-            Напишіть нам — відповімо щодо збору, партнерства або звітності. Наразі основний канал звʼязку — електронна пошта.
+            Напишіть нам — відповімо щодо збору, партнерства або звітності.
           </p>
           <a href={'mailto:' + data.fund.email} style={{ display: 'inline-flex', alignItems: 'center', gap: 12, marginTop: 26,
             background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 'var(--cc-r-pill)',
@@ -104,7 +104,6 @@ function Footer({ data }) {
         <div style={{ height: 1, background: 'rgba(255,255,255,0.10)', margin: '32px 0 20px' }} />
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, fontFamily: 'var(--cc-font-body)', fontSize: 12.5 }}>
           <span>© 2026 БФ «Освіта. Наука. Медицина». Неприбуткова організація.{data.fund.edrpou ? ' ЄДРПОУ ' + data.fund.edrpou + '.' : ''}</span>
-          <span>Зроблено з турботою у Львові</span>
         </div>
       </Container>
     </footer>

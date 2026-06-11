@@ -53,8 +53,6 @@ function Header({ data, accent, onDonate, scrolled }) {
 
 function DonationCard({ data, accent, onDonate, dark }) {
   const c = data.campaign;
-  const [amt, setAmt] = React.useState(c.presets[1]);
-  const [custom, setCustom] = React.useState('');
   const surface = dark ? {
     background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.16)',
     backdropFilter: 'blur(8px)', color: '#fff',
@@ -65,17 +63,15 @@ function DonationCard({ data, accent, onDonate, dark }) {
     <div style={{ borderRadius: 'var(--cc-r-xl)', padding: 22, ...surface }}>
       <Meter raised={c.raised} goal={c.goal} dark={dark} />
       <div style={{ height: 1, background: dark ? 'rgba(255,255,255,0.14)' : 'var(--cc-line)', margin: '18px 0' }} />
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 11 }}>
-        <span style={{ fontFamily: 'var(--cc-font-body)', fontWeight: 700, fontSize: 14, color: dark ? '#EAF1F6' : 'var(--cc-text)' }}>Оберіть суму внеску, грн</span>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+        <span style={{ fontFamily: 'var(--cc-font-body)', fontWeight: 700, fontSize: 14, color: dark ? '#EAF1F6' : 'var(--cc-text)' }}>Переказ за QR — у вашому банку</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: dark ? 'var(--cc-text-on-dark-2)' : 'var(--cc-text-3)' }}>
           <IconUsers size={15} />{window.fmtUAH(c.donors)} донорів
         </span>
       </div>
-      <AmountPicker presets={c.presets} value={amt} onChange={(v) => { setAmt(v); setCustom(''); }}
-        custom={custom} onCustom={setCustom} />
       <Button variant={accent} size="lg" icon={<IconHeart />} onClick={onDonate}
-        style={{ width: '100%', marginTop: 14 }}>
-        {`Підтримати на ${window.fmtUAH(custom ? Number(custom) : amt)} грн`}
+        style={{ width: '100%' }}>
+        Підтримати збір
       </Button>
       <p style={{ margin: '12px 2px 0', fontFamily: 'var(--cc-font-body)', fontSize: 12.5, lineHeight: 1.5,
         color: dark ? 'var(--cc-text-on-dark-2)' : 'var(--cc-text-3)', display: 'flex', gap: 7 }}>
