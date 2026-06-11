@@ -7,7 +7,7 @@ window.CC_DATA = {
     nameAccent: '«Освіта. Наука. Медицина»',
     short: 'Фонд «Освіта. Наука. Медицина»',
     edrpou: '46237538',
-    email: 'hello@onm.fund',            /* TODO: replace with real address */
+    email: 'co.cf.esm@gmail.com',
   },
   nav: [
     { id: 'collection', label: 'Про збір' },

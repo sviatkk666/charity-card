@@ -103,9 +103,9 @@ and word choice, not emoji.
 
 **Illustrative data flag.** `raised` and `donors` in `ui_kits/website/data.js`
 are **zeroed** for campaign start — update them as real contributions arrive.
-The email is still a placeholder — replace with the foundation's actual address
-before publishing. Site copy comes from the foundation's leaflet
-(`uploads/листівка повний ткст.docx`); fund documents are published from `docs/`.
+Site copy comes from the foundation's leaflet
+(`uploads/листівка повний ткст.docx`); fund documents are published from `docs/`;
+the contact email is the foundation's real address.
 
 ---
 
