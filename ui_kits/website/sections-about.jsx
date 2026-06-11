@@ -26,18 +26,23 @@ function CollectionSection({ data }) {
   return (
     <section id="collection" style={{ background: 'var(--cc-cream)', padding: '88px 0' }}>
       <Container width={1180}>
-        <div>
-          <Reveal><SectionHead eyebrow="Про збір" title={why[0].h} intro={why[0].p} /></Reveal>
-          <Reveal delay={120}><div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
-            {data.campaign.partners.map((p) => (
-              <span key={p} style={{ flex: '1 1 220px', display: 'flex', gap: 10, alignItems: 'flex-start',
-                background: 'var(--cc-white)', border: '1px solid var(--cc-line)', borderRadius: 'var(--cc-r-md)',
-                padding: '13px 15px', fontFamily: 'var(--cc-font-body)', fontSize: 13.5, fontWeight: 600,
-                color: 'var(--cc-text-2)', lineHeight: 1.35, boxShadow: 'var(--cc-shadow-sm)' }}>
-                <IconShield size={18} style={{ color: 'var(--cc-blue)', flex: 'none', marginTop: 1 }} />{p}
-              </span>
-            ))}
-          </div></Reveal>
+        <div className="cc-split" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 56, alignItems: 'center' }}>
+          <div>
+            <Reveal><SectionHead eyebrow="Про збір" title={why[0].h} intro={why[0].p} /></Reveal>
+            <Reveal delay={120}><div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
+              {data.campaign.partners.map((p) => (
+                <span key={p} style={{ flex: '1 1 220px', display: 'flex', gap: 10, alignItems: 'flex-start',
+                  background: 'var(--cc-white)', border: '1px solid var(--cc-line)', borderRadius: 'var(--cc-r-md)',
+                  padding: '13px 15px', fontFamily: 'var(--cc-font-body)', fontSize: 13.5, fontWeight: 600,
+                  color: 'var(--cc-text-2)', lineHeight: 1.35, boxShadow: 'var(--cc-shadow-sm)' }}>
+                  <IconShield size={18} style={{ color: 'var(--cc-blue)', flex: 'none', marginTop: 1 }} />{p}
+                </span>
+              ))}
+            </div></Reveal>
+          </div>
+          <Reveal delay={160}><ImageSlot id="cc-premises" ratio="4 / 3"
+            src={window.ccRes('premisesCurrent', 'assets/premises-current.jpg')}
+            label="Поточний стан приміщення майбутньої клініки" /></Reveal>
         </div>
 
         <div className="cc-why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 18, marginTop: 64 }}>
