@@ -6,6 +6,7 @@ window.CC_DATA = {
     name: 'Благодійний фонд',
     nameAccent: '«Освіта. Наука. Медицина»',
     short: 'Фонд «Освіта. Наука. Медицина»',
+    edrpou: '46237538',
     email: 'hello@onm.fund',            /* TODO: replace with real address */
   },
   nav: [
@@ -68,9 +69,10 @@ window.CC_DATA = {
     ],
   },
   documents: [
+    { t: 'Статут фонду', m: 'PDF', file: 'statut-fondu.pdf' },
+    { t: 'Виписка з ЄДР', m: 'PDF', file: 'vypyska-z-yedr.pdf' },
     { t: 'Витяг з Реєстру неприбуткових установ і організацій', m: 'PDF', file: 'vytiah-z-reiestru-neprybutkovykh.pdf' },
     { t: 'Лист ЛНМУ щодо організації збору коштів', m: 'PDF', file: 'lyst-shchodo-orhanizatsii-zboru.pdf' },
-    { t: 'Статут фонду', m: 'Готується' },
   ],
   policies: [
     { t: 'Політика конфіденційності', m: 'Чинна' },

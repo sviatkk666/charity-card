@@ -123,7 +123,7 @@ function Footer({ data }) {
         </div>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.10)', margin: '32px 0 20px' }} />
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, fontFamily: 'var(--cc-font-body)', fontSize: 12.5 }}>
-          <span>© 2026 БФ «Освіта. Наука. Медицина». Неприбуткова організація.</span>
+          <span>© 2026 БФ «Освіта. Наука. Медицина». Неприбуткова організація.{data.fund.edrpou ? ' ЄДРПОУ ' + data.fund.edrpou + '.' : ''}</span>
           <span>Зроблено з турботою у Львові</span>
         </div>
       </Container>

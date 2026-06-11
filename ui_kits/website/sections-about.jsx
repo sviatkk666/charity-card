@@ -139,7 +139,8 @@ function FundSection({ data }) {
               ))}
             </ul>
             <div style={{ marginTop: 24 }}>
-              <Button variant="primary" icon={<IconDownload />}>Завантажити статут</Button>
+              <Button variant="primary" icon={<IconDownload />}
+                onClick={() => window.open(window.ccDoc('statut-fondu.pdf'), '_blank')}>Завантажити статут</Button>
             </div>
           </div></Reveal>
           <Reveal delay={130}><div style={{ background: 'var(--cc-hero-bg)', borderRadius: 'var(--cc-r-xl)', padding: 32, color: '#fff' }}>
