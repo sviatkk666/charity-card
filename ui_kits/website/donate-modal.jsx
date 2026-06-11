@@ -10,11 +10,8 @@ function DonateModal({ data, accent, open, onClose }) {
       <div onClick={(e) => e.stopPropagation()} style={{ width: 'min(420px,100%)', maxHeight: '92vh', overflow: 'auto',
         background: 'var(--cc-cream)', borderRadius: 'var(--cc-r-xl)', boxShadow: 'var(--cc-shadow-lg)',
         animation: 'ccPop .22s cubic-bezier(.2,.8,.2,1)', padding: 26, boxSizing: 'border-box' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
-          <div>
-            <Eyebrow>Підтримати збір</Eyebrow>
-            <h3 className="cc-h3" style={{ margin: '8px 0 0' }}>Скануйте QR у застосунку банку</h3>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+          <Eyebrow>Підтримати збір</Eyebrow>
           <button onClick={onClose} style={{ background: 'var(--cc-n100)', border: 'none', borderRadius: 99,
             width: 34, height: 34, display: 'grid', placeItems: 'center', cursor: 'pointer', color: 'var(--cc-text-2)', flex: 'none' }}><IconX size={18} /></button>
         </div>

@@ -64,7 +64,7 @@ function DonationCard({ data, accent, onDonate, dark }) {
       <Meter raised={c.raised} goal={c.goal} dark={dark} />
       <div style={{ height: 1, background: dark ? 'rgba(255,255,255,0.14)' : 'var(--cc-line)', margin: '18px 0' }} />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-        <span style={{ fontFamily: 'var(--cc-font-body)', fontWeight: 700, fontSize: 14, color: dark ? '#EAF1F6' : 'var(--cc-text)' }}>Переказ за QR — у вашому банку</span>
+        <span style={{ fontFamily: 'var(--cc-font-body)', fontWeight: 700, fontSize: 14, color: dark ? '#EAF1F6' : 'var(--cc-text)' }}>Переказ за QR — monobank</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: dark ? 'var(--cc-text-on-dark-2)' : 'var(--cc-text-3)' }}>
           <IconUsers size={15} />{window.fmtUAH(c.donors)} донорів
         </span>
