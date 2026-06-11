@@ -74,11 +74,6 @@ window.CC_DATA = {
     { t: 'Витяг з Реєстру неприбуткових установ і організацій', m: 'PDF', file: 'vytiah-z-reiestru-neprybutkovykh.pdf' },
     { t: 'Лист ЛНМУ щодо організації збору коштів', m: 'PDF', file: 'lyst-shchodo-orhanizatsii-zboru.pdf' },
   ],
-  policies: [
-    { t: 'Політика конфіденційності', m: 'Чинна' },
-    { t: 'Політика повернення внесків', m: 'Чинна' },
-    { t: 'Публічна оферта', m: 'Готується' },
-  ],
 };
 window.fmtUAH = (n) => n.toLocaleString('uk-UA').replace(/,/g, ' ');
 /* Resolve an asset: use the inlined blob (standalone bundle) when present,

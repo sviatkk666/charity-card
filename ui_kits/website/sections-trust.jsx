@@ -38,26 +38,6 @@ function TransparencySection({ data }) {
           </div>
         </div>
 
-        {/* Policies */}
-        <Reveal><div style={{ marginTop: 56, paddingTop: 40, borderTop: '1px dashed var(--cc-line-strong)' }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-            <h3 className="cc-h3" style={{ margin: 0 }}>Політики фонду</h3>
-            <span className="cc-sm">Кількість документів поступово збільшуватиметься.</span>
-          </div>
-          <div className="cc-why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginTop: 20 }}>
-            {data.policies.map((p) => (
-              <div key={p.t} style={{ display: 'flex', alignItems: 'center', gap: 12, background: 'var(--cc-white)',
-                border: '1px solid var(--cc-line)', borderRadius: 'var(--cc-r-md)', padding: '14px 16px' }}>
-                <IconShield size={20} style={{ color: 'var(--cc-teal-deep)', flex: 'none' }} />
-                <span style={{ flex: 1, fontFamily: 'var(--cc-font-body)', fontWeight: 600, fontSize: 14.5, color: 'var(--cc-text)' }}>{p.t}</span>
-                <span style={{ fontFamily: 'var(--cc-font-body)', fontSize: 12, fontWeight: 700,
-                  color: p.m === 'Чинна' ? 'var(--cc-teal-deep)' : 'var(--cc-n500)',
-                  background: p.m === 'Чинна' ? 'var(--cc-teal-soft)' : 'var(--cc-n100)',
-                  padding: '4px 9px', borderRadius: 99 }}>{p.m}</span>
-              </div>
-            ))}
-          </div>
-        </div></Reveal>
       </Container>
     </section>
   );
