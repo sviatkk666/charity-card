@@ -84,19 +84,20 @@ window.fmtUAH = (n) => n.toLocaleString('uk-UA').replace(/,/g, ' ');
    в Інтернеті → CSV). Клієнт редагує клітинки — сайт підтягує цифри при кожному
    завантаженні. Рядки CSV: "зібрано,7000000" / "донорів,123" / "мета,20000000".
    Поки URL порожній — використовуються значення з campaign вище. */
-window.CC_COUNTER_URL = '';
+window.CC_COUNTER_URL = 'https://docs.google.com/spreadsheets/d/1jUE3GGPf1uSFrB3O_COGFaY2UTLOVXgA3bDTDiEaEQU/gviz/tq?tqx=out:csv';
 window.ccLoadCounter = async () => {
   if (!window.CC_COUNTER_URL) return;
   try {
     const res = await fetch(window.CC_COUNTER_URL, { cache: 'no-store' });
     if (!res.ok) return;
     const text = await res.text();
-    const num = (v) => parseInt(String(v || '').replace(/[^\d]/g, ''), 10);
     const c = window.CC_DATA.campaign;
     text.split(/\r?\n/).forEach((line) => {
-      const cells = line.split(',');
-      const key = (cells[0] || '').toLowerCase();
-      const val = num(cells[1]);
+      const cut = line.indexOf(',');
+      if (cut < 0) return;
+      const key = line.slice(0, cut).toLowerCase();
+      /* решта рядка → лише цифри: "7 000 000", "7,000,000", «"0"» — все ок */
+      const val = parseInt(line.slice(cut + 1).replace(/[^\d]/g, ''), 10);
       if (isNaN(val)) return;
       if (/зібрано|raised/.test(key)) c.raised = val;
       else if (/донор|donors/.test(key)) c.donors = val;
