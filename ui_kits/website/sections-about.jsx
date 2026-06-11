@@ -40,9 +40,12 @@ function CollectionSection({ data }) {
               ))}
             </div></Reveal>
           </div>
-          <Reveal delay={160}><ImageSlot id="cc-premises" ratio="16 / 9"
-            src={window.ccRes('premisesCurrent', 'assets/premises-current.jpg')}
-            label="Поточний стан приміщення майбутньої клініки" /></Reveal>
+          <Reveal delay={160}><figure style={{ margin: 0 }}>
+            <img src={window.ccRes('premisesCurrent', 'assets/premises-current.jpg')}
+              alt="Поточний стан приміщення майбутньої клініки"
+              style={{ display: 'block', width: '100%', height: 'auto', borderRadius: 18, boxShadow: 'var(--cc-shadow-md)' }} />
+            <figcaption className="cc-caption" style={{ marginTop: 10 }}>Поточний стан приміщення майбутньої клініки</figcaption>
+          </figure></Reveal>
         </div>
 
         <div className="cc-why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 18, marginTop: 64 }}>
