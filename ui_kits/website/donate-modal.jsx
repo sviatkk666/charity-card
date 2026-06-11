@@ -25,15 +25,9 @@ function DonateModal({ data, accent, open, onClose }) {
             style={{ display: 'block', width: '100%', borderRadius: 8 }} />
         </div>
 
-        <Button variant={accent} size="lg" icon={<IconHeart />}
-          onClick={() => window.open(pay.qrLink, '_blank')} style={{ width: '100%', marginTop: 16 }}>
-          Відкрити в застосунку банку
-        </Button>
-
-        <p style={{ margin: '16px 2px 0', fontFamily: 'var(--cc-font-body)', fontSize: 12.5, lineHeight: 1.6, color: 'var(--cc-text-3)' }}>
-          Отримувач: <b style={{ color: 'var(--cc-text-2)' }}>{data.fund.short}</b> · ЄДРПОУ {data.fund.edrpou}<br />
-          IBAN: <span className="cc-num" style={{ fontSize: 12.5, color: 'var(--cc-text-2)', userSelect: 'all' }}>{pay.iban}</span><br />
-          Призначення: {pay.purpose}
+        <p style={{ margin: '16px 2px 0', fontFamily: 'var(--cc-font-body)', fontSize: 13, lineHeight: 1.7, color: 'var(--cc-text-3)' }}>
+          Отримувач: <b style={{ color: 'var(--cc-text-2)' }}>{data.fund.short}</b><br />
+          IBAN: <span className="cc-num" style={{ fontSize: 13, color: 'var(--cc-text-2)', userSelect: 'all' }}>{pay.iban}</span>
         </p>
       </div>
     </div>
