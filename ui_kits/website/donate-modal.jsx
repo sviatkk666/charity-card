@@ -23,7 +23,7 @@ function DonateModal({ data, accent, open, onClose }) {
         </div>
 
         <p style={{ margin: '16px 2px 0', fontFamily: 'var(--cc-font-body)', fontSize: 13, lineHeight: 1.7, color: 'var(--cc-text-3)' }}>
-          Отримувач: <b style={{ color: 'var(--cc-text-2)' }}>{data.fund.short}</b><br />
+          Одержувач: <b style={{ color: 'var(--cc-text-2)' }}>{data.fund.name} {data.fund.nameAccent}</b><br />
           IBAN: <span className="cc-num" style={{ fontSize: 13, color: 'var(--cc-text-2)', userSelect: 'all' }}>{pay.iban}</span>
         </p>
       </div>
