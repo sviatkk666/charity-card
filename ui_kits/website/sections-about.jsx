@@ -79,27 +79,6 @@ function CollectionSection({ data }) {
           </div></Reveal>
         ) : null}
 
-        {/* Transparency of the request — university letter */}
-        <Reveal><div className="cc-split" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 48,
-          alignItems: 'center', marginTop: 64, background: 'var(--cc-cream-2)', borderRadius: 'var(--cc-r-xl)', padding: 32 }}>
-          <ImageSlot id="cc-letter" ratio="3 / 4" placeholder="Скан листа-звернення від Університету"
-            src={window.ccRes('letterScan', 'assets/letter-scan.jpg')}
-            label="Офіційне звернення ЛНМУ" />
-          <div>
-            <Eyebrow>Підстава збору</Eyebrow>
-            <h3 className="cc-h3" style={{ margin: '12px 0 0' }}>Офіційне звернення від Університету</h3>
-            <p className="cc-body" style={{ margin: '14px 0 0' }}>
-              Збір створено на підставі офіційного листа ЛНМУ імені Данила Галицького
-              «Щодо організації збору коштів» — відповідно до Меморандуму про співпрацю
-              між Університетом і Фондом. Документ публікуємо, щоб кожен донор бачив
-              підставу та призначення коштів.
-            </p>
-            <div style={{ marginTop: 20 }}>
-              <Button variant="secondary" icon={<IconFile />}
-                onClick={() => window.open(window.ccDoc('lyst-shchodo-orhanizatsii-zboru.pdf'), '_blank')}>Переглянути звернення</Button>
-            </div>
-          </div>
-        </div></Reveal>
       </Container>
     </section>
   );
